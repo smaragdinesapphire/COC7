@@ -1,0 +1,729 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>TRPG-COC7</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="styles/index.css"/>		
+		<script src="../../jQuery/jquery-3.2.1.min.js"></script>
+		<script src="index.js"></script>
+		<script src="action.js"></script>
+		<script src="Character.js"></script>
+		<script src="FinalData.js"></script>
+		<script src="Occupation.js"></script>
+		<script src="Skill.js"></script>
+	  
+	</head>
+	<body>
+		<div  class="underblock">
+			<div class="first">
+				<div class="index">
+					<div class='index_1'>The Call of Cthulhu</div><br/>
+					<div class='index_2'>克蘇魯　</div><br/>
+					<div class='index_3'>　　的呼喚</div><br/>
+					<div class='index_4'>>>COC7創角系統<<</div><br/>
+					
+				</div>
+			</div>
+			<div class="inputProperty">
+				<div class="menu">
+					第一步：生成屬性
+				</div>
+				<div class="explain">
+					在此步驟之中，將會決定該角色的基礎數值，未來會受<span class="red">年紀</span>影響而有所補正。<br />
+					角色數值是以骰子擲骰點數決定，當數值不滿意時既可重新擲骰，但須<span class="red">全能力重新擲骰</span>，最多3次。<br />
+					實際數值為經過計算後得到的能力數值，可參考規則書的創角方法。
+					<br />
+					*名詞解釋：<span class="blue">3</span>D<span class="red">6</span> 為 <span class="blue">3</span>顆<span class="red">6</span>面骰。
+				</div>
+				<div class="body">
+
+					<div class="table">
+						<div class="tr">
+							<div class="td">屬性名稱</div>
+							<div class="td">說明</div>
+							<div class="td">骰子數值</div>
+							<div class="td">實際數值</div>
+						</div>
+						<div class="tr">
+							<div class="td">力量STR</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inSTR" class="D3"></select></div>
+							<div class="td">0</div>
+						</div>
+						<div class="tr">
+							<div class="td">敏捷DEX</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inDEX" class="D3"></select></div>
+							<div class="td">0</div>
+						</div>
+						<div class="tr">
+							<div class="td">智力INT</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inINT" class="D2"></select></div>
+							<div class="td">0</div>
+						</div>
+						<div class="tr">
+							<div class="td">體質CON</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inCON" class="D3"></select></div>
+							<div class="td">0</div>
+						</div>
+						<div class="tr">
+							<div class="td">外表APP</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inAPP" class="D3"></select></div>
+							<div class="td">0</div>
+						</div>
+						<div class="tr">
+							<div class="td">意志POW</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inPOW" class="D3"></select></div>
+							<div class="td">0</div>
+						</div>
+						<div class="tr">
+							<div class="td">體型SIZ</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inSIZ" class="D2"></select></div>
+							<div class="td">0</div>
+						</div>
+						<div class="tr">
+							<div class="td">學歷EDU</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inEDU" class="D2"></select></div>
+							<div class="td">0</div>
+						</div>
+						<div class="tr">
+							<div class="td">幸運LUCK</div>
+							<div class="td"><button type="button" class="inProQ">?</button></div>
+							<div class="td"><select id="inLUK" class="D3"></select></div>
+							<div class="td">0</div>
+						</div>
+					</div>
+					<div>
+						<div class="button"><input type="submit" id="random" value="隨機(3)" /></div>
+						<div class="button"><input type="submit" id="checkInPro" value="確定" /></div>
+					</div>
+				</div>
+			</div>
+			<div class="inputAge">
+				<div class="menu">
+					第二步：設定年紀
+				</div>
+				<div class="explain">
+					根據不同的年紀，會對角色能力有所調整。<br />
+					年紀特色大致上為<span class="red">15~19</span>歲身體數值略弱勢，但略為幸運。<br />
+					<span class="red">20</span>至<span class="red">30</span>來歲為身體數值巔峰。<br />
+					<span class="red">40</span>歲開始隨年紀增長身體數值開始衰退，但專業知識越豐富。
+				</div>
+				<div class="body">
+					<div class="ageSet">
+						請設定年紀：<select id="inAGE"></select>
+					</div>
+					<div class="age15">
+						<br />選擇<span class="red">STR</span>或<span class="red">SIZ</span>減去<span class="red">5</span>點數值。另外，系統將自動扣除<span class="red">5</span>點<span class="red">EDU</span>。
+						<form name='ageT1' id='ageT1'>
+							<div>
+							<div class="table">
+								<div class="tr">
+									<div class="td">屬性名稱</div>
+									<div class="td">數值</div>
+									<div class="td">選擇</div>
+								</div>
+								<div class="tr">
+									<div class="td">STR</div>
+									<div class="td"></div>
+									<div class="td"><input type='radio' name='ageT1slt' class='circle' value='str' /></div>
+								</div>
+								<div class="tr">
+									<div class="td">SIZ</div>
+									<div class="td"></div>
+									<div class="td"><input type='radio' name='ageT1slt' class='circle' value='siz' /></div>
+								</div>
+							</div>
+							</div>
+							<div>
+								請再次骰Luck並輸入數值：
+								<div class="shiftRight">LUCK<select id="inLUK2" class="D3"></select><br /></div>
+							</div>
+							<span class="red">*此處的Luck會與第一步的Luck進行比較並選擇最高值。</span>
+						</form>
+					</div>
+					<div class="age20">
+						<br />請進行一次EDU的成長擲骰，並直接輸入，將由系統判定是否成長。<br />
+						<div class="explain">*名詞解釋:成長骰為檢測值(1D100)高於原先數值(第一步之實際數值)時，即可進行成長(1D10)。因此，能力越強也越難成長。</div>
+						
+						<div id="ageT2">
+							<div class="table">
+								<div class="tr">
+									<div class="td">EDU檢測</div>
+									<div class="td"><select class="D100"></select></div>
+								</div>
+								<div class="tr">
+									<div class="td">EDU成長</div>
+									<div class="td"><select class="D10"></select></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ageOther">
+						<br />請從STR、CON或DEX之中合計減去<span class="ageIF"></span>點，並進行<span class="ageIF"></span>次EDU的成長擲骰。<br />隨年紀增長，系統將自動APP減<span class="ageIF"></span>及MOV減<span class="ageIF"></span>。<br />
+						<div class="explain">*名詞解釋:成長擲骰為擲1D100，如果擲出值大於現有的數值，可再擲 1D10進行成長，將擲出來的加回原有數值中。因此，能力越強也越難成長。</div>
+						<div name = 'ageT3' id='ageT3'>
+							<div class="table">
+								<div class="tr">
+									<div class="td"></div><div class="td">原數質</div><div class="td">減少</div><div class="td">剩餘數值</div>
+								</div>
+								<div class="tr">
+									<div class="td">STR</div><div class="td" id="outSTR"></div><div class="td"><select class="D100" id="dSTR"></select></div><div class="td" id="outSTR2">0</div>
+								</div>
+								<div class="tr">
+									<div class="td">CON</div><div class="td" id="outCON"></div><div class="td"><select class="D100" id="dCON"></select></div><div class="td" id="outCON2">0</div>
+								</div>
+								<div class="tr">
+									<div class="td">DEX</div><div class="td" id="outDEX"></div><div class="td"><select class="D100" id="dDEX"></select></div><div class="td" id="outDEX2">0</div>
+								</div>
+							</div>
+							<div>合計減少<span id="debuff">0</span>點數值</div>
+							<br />
+							<div>EDU檢測及成長</div>
+							<br />
+							<div class="eduUP">
+								<div class="table">
+									<div class="tr">
+										<div class="td">1st 檢測</div>
+										<div class="td"><select class="D100"></select></div>
+									</div>
+									<div class="tr">
+										<div class="td">1st 成長</div>
+										<div class="td"><select class="D10"></select></div>
+									</div>
+								</div>
+								<br />
+								<div class="table">
+									<div class="tr">
+										<div class="td">2nd 檢測</div>
+										<div class="td"><select class="D100"></select></div>
+									</div>
+									<div class="tr">
+										<div class="td">2nd 成長</div>
+										<div class="td"><select class="D10"></select></div>
+									</div>
+								</div>
+								<br />
+								<div class="table">
+									<div class="tr">
+										<div class="td">3rd 檢測</div>
+										<div class="td"><select class="D100"></select></div>
+									</div>
+									<div class="tr">
+										<div class="td">3rd 成長</div>
+										<div class="td"><select class="D10"></select></div>
+									</div>
+								</div>
+								<br />
+								<div class="table">
+									<div class="tr">
+										<div class="td">4th 檢測</div>
+										<div class="td"><select class="D100"></select></div>
+									</div>
+									<div class="tr">
+										<div class="td">4th 成長</div>
+										<div class="td"><select class="D10"></select></div>
+									</div>
+								</div>
+							
+							</div>
+						</div>
+					</div>
+					<div><input type="submit" id="checkInAge" value="送出" /></div>
+				</div>
+			</div>
+				
+			<div class="finalProperty">
+				<div class="explain">請查看數值之補正</div>
+				<div class="body">
+					<div class="table">
+						<div class="tr">
+							<div class="td">屬性名稱</div>
+							<div class="td">說明</div>
+							<div class="td">初始數值</div>
+							<div class="td"></div>
+							<div class="td">最終數值</div>
+						</div>
+						<div class="tr">
+							<div class="td">力量STR</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">敏捷DEX</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">智力INT</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">體質CON</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">外表APP</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">意志POW</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">體型SIZ</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">學歷EDU</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">幸運LUCK</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">生命力HP</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">魔法力MP</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">心智SAN</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">移動率MOV</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">額外傷害DB</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">體格BUILD</div>
+							<div class="td"><button type="button" class="inProQ2">?</button></div>
+							<div class="td"></div>
+							<div class="td"></div>
+							<div class="td"></div>
+						</div>
+					</div>
+					<div>
+						<div><button class="O">確定</button></div><div><button class="X">取消</button></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="jobChoose">
+				<div class="menu">第三步：選擇職業</div>
+				<div class="explain">
+					在這裡面的職業中選擇中意的職業，不同的職業有不同的職業技能。<br />
+					職業點數只能配點到職業技能裡面，不同職業有不同的計算方式得到職業點數。
+				</div>
+				<div class="body">
+					<div class="jobCS">
+						<button class="LRButton">上一個</button>
+						<select class="job"></select>
+						<button class="LRButton">下一個</button>
+					</div>
+					<div class="table">
+						<div class="tr">
+							<div class="td">信用評價</div>
+							<div class="td"><button class="jobChooseQ">?</button></div>
+							<div class="td">30 ~ 70</div>
+						</div>
+						<div class="tr">
+							<div class="td">職業點數</div>
+							<div class="td"><button class="jobChooseQ">?</button></div>
+							<div class="td"></div>
+						</div>
+						<div class="tr">
+							<div class="td">職業技能</div>
+							<div class="td"><button class="jobChooseQ">?</button></div>
+							<div class="td">會計、法律、圖書館使用、聆聽、說服、識破、個人專長X1</div>
+						</div>
+					</div>
+					<p><button class="jobChooseCheck">確定</button></p>
+				</div>
+			</div>
+			
+			<div class="jobPoint">
+				<div class="menu">第四步：配給職業點數	</div>
+				<div class="explain">
+					在第四步中，將會把職業點數分配至職業技能中，而第五步則可以將興趣點數配給於任意技能(除克蘇魯神話外)。<br />
+					數值的高低將會影響使用技能的成功率，數值越高則成功率越高，同時表示該角色對此技能的熟練度/專業度。<br />
+					<p>技能值所代表的意義大略如下：<br />
+						<div class="shiftRight">
+							01%–05% [外行人]：完全就是個外行人，最好不要跟人家說你學過<br /><br />
+							06%–19% [新手]：剛弄懂一點點的初學者<br /><br />
+							20%–49% [業餘]：具備基本才能或是通過（愛好者等級的）基礎訓練<br /><br />
+							50%–74% [專業]：可以透過此一技之長來討生活。相當於在專科中取得學士學位<br /><br />
+							75%–89% [專家]：專業的進階。相當於碩士或博士程度<br /><br />
+							90%–99% [大師]：世界一流
+						</div>
+					</p>
+				</div>
+				<div class="body">
+					<div>剩餘職業點數：<span class="lessPoint"></span>點</div>
+					<div class="jobCreate">
+						<div>請先將職業點數配給到信用評級</div>
+						<div class="table">
+							<div class="tr">
+								<div class="td">信用評級</div>
+								<div class="td"><span class="createRate"></span></div>
+								<div class="td"><button class="createQ">?</button></div>
+								<div class="td"><select id="jobCreate"></select></div>
+							</div>
+						</div>
+					</div>
+					<br />
+					<div class="norPoint">
+						<div>將職業技能點選擇性地分配到職業技能上，直到將職業技能點全部用完。</div>
+						<div class="table"></div>
+					</div>
+					
+					<div class="self">
+						<div class="skillTitle">交際技能</div>
+						<div></div>
+					</div>
+					
+					<div class="mulPoint">
+						<div class="skillTitle">多選技能</div>
+					</div>
+					
+					<div class="selfInterested">
+						<div class="skillTitle">個人專長</div>
+					</div>
+					
+					<div class='button'>
+						<div>
+							<input type='submit' value="上一頁"></input>
+							<input type='submit' value="職業點數重置"></input>
+							<input type='submit' value="下一頁"></input>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="allPoint">
+				<div class="menu">第五步：配給興趣點數	</div>
+				<div class="explain">
+					在第五步中，將會把興趣點數分配至任一技能中(除克蘇魯神話外)。<br />
+					數值的高低將會影響使用技能的成功率，數值越高則成功率越高，同時表示該角色對此技能的熟練度/專業度。<br />
+					<p>技能值所代表的意義大略如下：<br />
+						<div class="shiftRight">
+							01%–05% [外行人]：完全就是個外行人，最好不要跟人家說你學過<br /><br />
+							06%–19% [新手]：剛弄懂一點點的初學者<br /><br />
+							20%–49% [業餘]：具備基本才能或是通過（愛好者等級的）基礎訓練<br /><br />
+							50%–74% [專業]：可以透過此一技之長來討生活。相當於在專科中取得學士學位<br /><br />
+							75%–89% [專家]：專業的進階。相當於碩士或博士程度<br /><br />
+							90%–99% [大師]：世界一流
+						</div>
+					</p>
+					
+					*單一技能總點數上限為99，其計算方式為 技能總點數 = 基本點數 + 職業點數 + 興趣點數。
+				</div>
+				<div class="body">
+					<div>剩餘興趣點數：<span class="lessPoint"></span>點</div>
+					<div>
+						<div class="table"><div class="tr"><div class="td">技能</div><div class="td">說明</div><div class="td">基礎+職業</div><div class="td">興趣點數</div><div class="td">總點數</div></div><div class="tr"><div class="td">會計</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">人類學</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">鑑定</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">考古學</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">魅力</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">攀爬</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">電腦使用</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">信用評級</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">克蘇魯神話</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">偽裝</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">閃避</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">開車</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div></div>
+						<div class="table"><div class="tr"><div class="td">技能</div><div class="td">說明</div><div class="td">基礎+職業</div><div class="td">興趣點數</div><div class="td">總點數</div></div><div class="tr"><div class="td">電器維修</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">電子學</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">話術</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">戰鬥(拳腳)</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">火器(手槍)</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">火器(步槍/散彈槍)</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">急救</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">歷史</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">威脅</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">跳躍</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div></div>
+						<div class="table"><div class="tr"><div class="td">技能</div><div class="td">說明</div><div class="td">基礎+職業</div><div class="td">興趣點數</div><div class="td">總點數</div></div><div class="tr"><div class="td">母語</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">法律</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">圖書館使用</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">聆聽</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">鎖匠</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">機械維修</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">醫藥</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">自然世界</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">導航</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">神祕學</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">操作重機</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">說服</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">心理學</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">精神分析</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div></div>
+						<div class="table"><div class="tr"><div class="td">技能</div><div class="td">說明</div><div class="td">基礎+職業</div><div class="td">興趣點數</div><div class="td">總點數</div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">巧手</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">識破</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">匿蹤</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">游泳</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">投擲</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td">追蹤</div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div><div class="tr"><div class="td"></div><div class="td"><button>?</button></div><div class="td"></div><div class="td"><select class="D100_all"></select></div><div class="td"></div></div></div>
+					</div>
+					<div>
+						<input type="submit" value="上一頁" />
+						<input type="submit" value="興趣點數重置" />
+						<input type="submit" value="完成" />
+					</div>
+				</div>
+			</div>
+			
+			<div class="finish">
+				<div class="menu">第六步：完成角色創立	</div>
+				<div class="explain">
+					在第六步中，請將數值填入角色卡中。大部分技能/能力會有三個數值，分別為一般/困難/極難。<br />
+					在不同情境之下會使用不同難度的成功率，困難為一般的1/2，極難為一般的1/4。<br /><br />
+					填完數值後，請完成角色卡中的角色背景、現金及財產、持有工具等。<br />
+					<div class="shiftRight">
+						★角色背景能使玩家更投入扮演角色，賦予角色活力。角色背景能使玩家更投入扮演角色，賦予角色活力。<br />
+						★現金及財產表示一名玩家的富裕程度與金融信度。<br />
+						★持有工具則是角色攜帶的物品，請記得與KP討論是否允許攜帶該物品。<br />
+					</div>
+					<p>*下方有提供角色背景方向參考的小工具</p>
+					
+				</div>
+				<div class="body">
+					<div>
+						角色職業：<span></span>，角色年紀：<span></span>歲
+					</div>
+					<br />
+					<div>
+						<div class="title">角色屬性</div>
+						<div class='property'>
+							<div class="bigBox">
+								<div class="box">
+									<div class="name">STR<br />力量</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+								<div class="box">
+									<div class="name">DEX<br />敏捷</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+								<div class="box">
+									<div class="name">INT<br />智力</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+							</div>
+							<div class="bigBox">
+								<div class="box">
+									<div class="name">CON<br />體質</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+								<div class="box">
+									<div class="name">APP<br />外貌</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+								<div class="box">
+									<div class="name">POW<br />意志</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+							</div>
+							<div class="bigBox">
+								<div class="box">
+									<div class="name">SIZ<br />體型</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+								<div class="box">
+									<div class="name">EDU<br />教育</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+								<div class="box">
+									<div class="name">MOV<br />移動</div>
+									<div class="pointN"></div>
+									<div class="pointH"></div>
+									<div class="pointV"></div>
+								</div>
+							</div>
+						</div>
+					
+
+						<div class="otherBox">
+							<div class="table">
+								<div class="tr">
+									<div class="td">HP：</div>
+									<div class="td"></div>
+									<div class="td">傷害追加：</div>
+									<div class="td"></div>
+								</div>
+								<div class="tr">
+									<div class="td">SAN：</div>
+									<div class="td"></div>
+									<div class="td">體格：</div>
+									<div class="td"></div>
+								</div>
+								<div class="tr">
+									<div class="td">LUCK：</div>
+									<div class="td"></div>
+									<div class="td">閃躲：</div>
+									<div class="td"></div>
+								</div>
+								<div class="tr">
+									<div class="td">MP：</div>
+									<div class="td"></div>
+									<div class="td"></div>
+									<div class="td"></div>
+								</div>
+							</div>
+						
+<!-- 							<div class="otherProperty">
+								HP：<span></span><br />
+								SAN：<span></span><br />
+								LUCK：<span></span><br />
+								MP：<span></span><br />
+							</div>
+							<div class="battle">
+								傷害追加：<span></span><br />
+								體格：<span></span><br />
+								閃躲：<span></span><br />
+							</div> -->
+						</div>
+					</div>
+					<div class="skill">
+						<div class="title">技能</div>
+						<div class='allSkill'>
+							<div class="skill_0"><div class="skillExplain"><div class="name1">技能名稱</div><div class="pointN">一般</div><div class="pointBlock"><div class="pointH">困</div><div class="pointV">極</div></div></div><div class="skillBigBlock"><div class="name1">會計</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">人類學</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">鑑定</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">考古學</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">技藝</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">技藝</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">技藝</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">魅力</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">攀爬</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">電腦使用</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">信用評級</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">克蘇魯神話</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">偽裝</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">閃避</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">開車</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div></div>
+							<div class="skill_1"><div class="skillExplain"><div class="name1">技能名稱</div><div class="pointN">一般</div><div class="pointBlock"><div class="pointH">困</div><div class="pointV">極</div></div></div><div class="skillBigBlock"><div class="name1">電器維修</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">電子學</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">話術</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">戰鬥</div><div class="subName">拳腳</div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">戰鬥</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">戰鬥</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">火器</div><div class="subName">手槍</div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">火器</div><div class="subName">步槍/散彈槍</div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">火器</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">急救</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">歷史</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">威脅</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">跳躍</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">外語</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">外語</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div></div>
+							<div class="skill_2"><div class="skillExplain"><div class="name1">技能名稱</div><div class="pointN">一般</div><div class="pointBlock"><div class="pointH">困</div><div class="pointV">極</div></div></div><div class="skillBigBlock"><div class="name1">母語</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">法律</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">圖書館使用</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">聆聽</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">鎖匠</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">機械維修</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">醫藥</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">自然世界</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">導航</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">神祕學</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">操作重機</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">說服</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">駕駛</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">心理學</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">精神分析</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div></div>
+							<div class="skill_3"><div class="skillExplain"><div class="name1">技能名稱</div><div class="pointN">一般</div><div class="pointBlock"><div class="pointH">困</div><div class="pointV">極</div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">科學</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">科學</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">科學</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">巧手</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">識破</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">匿蹤</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">生存</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">游泳</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">投擲</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name1">追蹤</div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">技能</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">技能</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">技能</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">技能</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div><div class="skillBigBlock"><div class="name"><div class="name2">技能</div><div class="subName"></div></div><div class="pointN"></div><div class="pointBlock"><div class="pointH"></div><div class="pointV"></div></div></div></div>
+							
+						</div>
+					</div>
+					<div class="background">
+						<div class="title">背景</div>
+						<div class="explain">所有背景故事條目都可以看成角色扮演的指引。在填寫這些條目時，請嘗試讓每個條目的用語都能反應角色的人格本質：
+							<div  class="shiftRight">
+								★設定名字：為那個人或地點取名字，定義出物件或概念<br />
+								★附上感受：出於正面或負面的感受，從此開始建立<br />
+								★強化它：用愛取代喜歡，用痛恨取代不喜歡<br />
+								★情緒化：用必須取代可能<br />
+								★試著用使它充滿人格和意義的方式描寫<br />
+							</div>
+							<br />在角色卡背面有 10 個背景故事的範疇。至少試著去定義其中 6 個範疇的條目：形象描述（Personal Description）、意識形態/信仰（Ideology/Beliefs）、重要人士（Significant People）、重要地點（Meaningful Locations）、珍愛的物品（Treasured Possessions）和特質（Traits）。這六個範疇的條目可擲 1D10 決定，或自己從中選擇：
+						</div>
+						<div class="choose">
+							<div><button class="rand">隨機產生</button></div>
+							<div class="table">
+								<div class="tr">
+									<div class="td">背景</div>
+									<div class="td">1D10</div>
+									<div class="td">內容</div>
+								</div>
+								<div class="tr">
+									<div class="td">形象描述</div>
+									<div class="td">X</div>
+									<div class="td">形象描述由 APP 所決定，以下是一些可能的選項：<br />粗獷、帥氣、醜陋、漂亮、迷人、娃娃臉、聰明臉、懶散、呆滯、髒亂、耀眼、書呆子、年輕、委靡、豐滿、粗壯、多毛、苗條、優雅、襤褸、矮胖、蒼白、陰沉、大眾臉、紅潤、曬黑、皺紋、古板、羞怯、敏銳、健壯、嬌俏、肌肉棒子、魁梧、笨拙、脆弱。</div>
+								</div>
+								<div class="tr">
+									<div class="td">意識形態/信仰</div>
+									<div class="td"><select class="1D10"></select></div>
+									<div class="td">請選擇1D10</div>
+								</div>
+								<div class="tr">
+									<div class="td">重要人士</div>
+									<div class="td"><select class="1D10"></select></div>
+									<div class="td">請選擇1D10</div>
+								</div>
+								<div class="tr">
+									<div class="td">為何重要<br />(承上題)</div>
+									<div class="td"><select class="1D10"></select></div>
+									<div class="td">請選擇1D10</div>
+								</div>
+								<div class="tr">
+									<div class="td">重要地點</div>
+									<div class="td"><select class="1D10"></select></div>
+									<div class="td">請選擇1D10</div>
+								</div>
+								<div class="tr">
+									<div class="td">珍愛的物品</div>
+									<div class="td"><select class="1D10"></select></div>
+									<div class="td"><span>請選擇1D10</span><br/>它們也指出了對於角色來說讓他感到自在、安心的連結。請在裡面選擇一個現在還存在的東西當作關鍵連結（key connection），標註出來並告知 Keeper。失去關鍵連結必須進行 San 檢定 (1/1D6)。</div>
+									
+								</div>
+								<div class="tr">
+									<div class="td">特質</div>
+									<div class="td"><select class="1D10"></select></div>
+									<div class="td">請選擇1D10</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="explain">其他 4 個範疇可能會在遊戲中填寫：受傷與傷痕（Injuries & Scars）、恐懼症與狂熱症（Phobias & Manias）、神秘捲軸（Arcane Tomes）、咒語與神器（Spells & Artifacts）、遭遇奇怪物體（Encounters with Strange Entities）。</div>
+					</div>
+					<div class="cradit">
+						<div class="title">現金與資產</div>
+						<div class="explain">
+							角色的信用評級，決定角色的消費水平（Spending Level）、現金（Cash）與資產（Assets）：
+							<div class="shiftRight">
+								消費水平：在每一天，如果探索的花費在此範圍內，則不需要紀錄帳目。<br />
+								現金與資產：現金是可以使用的，但資產則必須要先變賣，並不是馬上可以取得並使用的金錢。<br />
+							</div>
+							*單位：美金，現代
+						</div>
+						<div class="body">
+							<div class="table">
+								<div class="tr">
+									<div class="td">消費水平</div>
+									<div class="td">現金</div>
+									<div class="td">資產</div>
+								</div>
+								<div class="tr">
+									<div class="td"></div>
+									<div class="td"></div>
+									<div class="td"></div>
+								</div>
+							</div>
+						</div>
+					</div>		
+					<div class="return">
+						<div><input type="submit" value="上一頁" /></div><div><input type="submit" value="重新創角" /></div>
+					</div>
+				</div>
+				
+				
+			</div>
+			<div class="under">
+				特別感謝<a href="https://www.facebook.com/UUTRPGPABBOSC">TRPG 里山咖啡社：宇宙聯合 TRPG 推廣協會藍星支部里山咖啡辦事處</a>提供翻譯資料<br />
+				如有疑問或建議可以寄信給我<span class="mail">smaragdinesapphire@gmail.com</span>
+			</div>
+		</div>
+
+		<div id="gotop">˄<br />T<br />O<br />P</div>
+	</body>
+</html>
