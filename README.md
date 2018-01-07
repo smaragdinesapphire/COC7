@@ -1,2 +1,2 @@
-# KingJ_COC7.github.io
+# COC7.github.io
 Just for practicing program.
