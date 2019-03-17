@@ -151,19 +151,19 @@
 				characteristicsFinal.build = "2";
 			}
 		};
-
+		
 		
 		return{
 			random: function() {
-				characteristicsInput.str = Math.floor(Math.random()*(18-3+1)+3);
-				characteristicsInput.con = Math.floor(Math.random()*(18-3+1)+3);
-				characteristicsInput.dex = Math.floor(Math.random()*(18-3+1)+3);
-				characteristicsInput.app = Math.floor(Math.random()*(18-3+1)+3);
-				characteristicsInput.pow = Math.floor(Math.random()*(18-3+1)+3);
-				characteristicsInput.siz = Math.floor(Math.random()*(12-2+1)+2);
-				characteristicsInput.Int = Math.floor(Math.random()*(12-2+1)+2);
-				characteristicsInput.edu = Math.floor(Math.random()*(12-2+1)+2);
-				characteristicsInput.luk = Math.floor(Math.random()*(18-3+1)+3);
+				characteristicsInput.str = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
+				characteristicsInput.con = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
+				characteristicsInput.dex = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
+				characteristicsInput.app = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
+				characteristicsInput.pow = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
+				characteristicsInput.siz = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 2;
+				characteristicsInput.Int = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 2;
+				characteristicsInput.edu = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 2;
+				characteristicsInput.luk = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
 				// characteristicsInput.age = Math.floor(Math.random()*(89-15+1)+15)
 			},
 			keyInAge: function(age) {
