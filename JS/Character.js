@@ -155,15 +155,15 @@
 		
 		return{
 			random: function() {
-				characteristicsInput.str = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
-				characteristicsInput.con = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
-				characteristicsInput.dex = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
-				characteristicsInput.app = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
-				characteristicsInput.pow = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
-				characteristicsInput.siz = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 2;
-				characteristicsInput.Int = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 2;
-				characteristicsInput.edu = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 2;
-				characteristicsInput.luk = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 3;
+				characteristicsInput.str = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 6;
+				characteristicsInput.con = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 6;
+				characteristicsInput.dex = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 6;
+				characteristicsInput.app = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 6;
+				characteristicsInput.pow = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 6;
+				characteristicsInput.siz = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6);
+				characteristicsInput.Int = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6);
+				characteristicsInput.edu = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6);
+				characteristicsInput.luk = Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6) + 6;
 				// characteristicsInput.age = Math.floor(Math.random()*(89-15+1)+15)
 			},
 			keyInAge: function(age) {
