@@ -1,4 +1,4 @@
-﻿(function() {
+(function() {
 	function Characteristics() {
 		this.age = 15;
 		this.str = 3;
